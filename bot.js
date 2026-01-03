@@ -9,9 +9,15 @@ const regionsToSkip = ["Чернігівщина", "Сумщина", "Полта
 
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
+const serviceAccountJSON = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+
+if (!serviceAccountJSON) {
+  throw new Error('❌ FIREBASE_SERVICE_ACCOUNT_JSON не задана в Railway Variables!');
+}
+
 admin.initializeApp({
-  credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON)),
-  databaseURL: 'https://ukraine-radar-default-rtdb.europe-west1.firebasedatabase.app'
+  credential: admin.credential.cert(JSON.parse(serviceAccountJSON)),
+  databaseURL: process.env.FIREBASE_DATABASE_URL || 'https://ukraine-radar-default-rtdb.europe-west1.firebasedatabase.app'
 });
 
 const db = admin.database();
