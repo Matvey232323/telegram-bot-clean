@@ -5,7 +5,7 @@ const admin = require('firebase-admin');
 const crypto = require('crypto');
 const cities = require('./cities');
 
-const regionsToSkip = ["Чернігівщина", "Сумщина", "Полтавщина", "Київщина", "Житомирщина", "Вінничина", "Кіровоградщина", "Харківщина", "Дніпропетровщина", "Одещина", "Миколаївщина", "Херсонщина"];
+const regionsToSkip = ["Закарпаття"];
 
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 
